@@ -44,7 +44,7 @@ bindsym $mod+Return exec /usr/bin/alacritty -e /usr/bin/tmux
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id "rofi -modi drun,run -show run"
+bindsym $mod+d exec --no-startup-id "rofi -show run"
 
 # shortcuts
 bindsym $mod+Shift+f exec --no-startup-id "pcmanfm ~/"
