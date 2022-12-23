@@ -5,6 +5,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # --------- general options ----------------
 
 workspace_layout tabbed
+workspace_auto_back_and_forth yes
 
 #default modifier: Windows key
 set $Mod Mod4
@@ -67,8 +68,7 @@ exec --no-startup-id "setxkbmap -model acer_laptop -layout us,gr -option grp:alt
 # =============== Media Keys ==================
 
 # === PrntScrn and send it under /media/screenshots
-bindsym Print       exec "/usr/bin/flameshot"; \
-                    exec --no-startup-id "/usr/bin/flameshot gui"
+bindsym Print       exec --no-startup-id "/usr/bin/flameshot && /usr/bin/flameshot gui"
 
 # === Increase/Decrease monitor brightness
 bindsym XF86MonBrightnessUp  exec --no-startup-id "xbacklight  +10"
@@ -270,6 +270,7 @@ for_window [title="Preferences$"]               floating enable
 # window handling => move to workspace
 assign [class="^Telegram"]      → "im"
 assign [class="(?i)Discord.*"]  → "im"
+assign [class="(?i)Signal*"]  → "im"
 
 assign [class="^(?i)Thunderbird"]   → "mail"
 assign [class="^VirtualBox"]        → "vbox"
