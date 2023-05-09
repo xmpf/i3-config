@@ -14,21 +14,21 @@ set $Mod Mod4
 # Right button for resize, left for dragging.
 floating_modifier $Mod
 
-default_border pixel
-default_border pixel 4
+default_border pixel 3
+default_floating_border pixel 5
 
 # font
 font pango:FontAwesome 11px
 
 # changing border style
 bindsym $Mod+n border none
-bindsym $Mod+b border pixel 4
+bindsym $Mod+b border pixel 3
 
 # ------- key-bindings ----------
 
 # start a terminal
-# bindsym $Mod+Shift+Return   exec --no-startup-id konsole --hide-menubar -e tmux
-bindsym $Mod+Return         exec --no-startup-id alacritty -e tmux
+# bindsym $Mod+Shift+Return exec --no-startup-id konsole --hide-menubar -e tmux
+bindsym $Mod+Return exec --no-startup-id alacritty -e tmux
 
 # caps lock
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+10 i3blocks
@@ -37,26 +37,10 @@ bindsym --release Caps_Lock exec pkill -SIGRTMIN+10 i3blocks
 bindsym --release Num_Lock exec pkill -SIGRTMIN+11 i3blocks
 
 # lock screen (man i3lock)
-bindsym Ctrl+$Mod+l         exec --no-startup-id i3lock --blur 5                \
-                                                        --clock                 \
-                                                        --indicator             \
-                                                        # --wrongtext="Try again"\
-                                                        # --greetertext="Locked"  \
-                                                        # --noinputtext="Cleared"\
-                                                        --ignore-empty-password \
-                                                        --show-failed-attempts  \
-                                                        --insidecolor=cccccc00  \
-                                                        --linecolor=a0b0c000    \
-                                                        --ringcolor=c0b0a000    \
-                                                        --bar-color=00ff0000    \
-                                                        --datecolor=ffffff00    \
-                                                        --timecolor=ffffff00
-
-
-
+bindsym Ctrl+$Mod+l exec --no-startup-id i3lock --ignore-empty-password --color="#000000"
 
 # kill focused window
-bindsym $Mod+Shift+q        kill
+bindsym $Mod+Shift+q kill
 
 # rofi
 bindsym $Mod+d exec --no-startup-id "rofi -show run"
@@ -68,45 +52,45 @@ exec --no-startup-id "setxkbmap -model acer_laptop -layout us,gr -option grp:alt
 # =============== Media Keys ==================
 
 # === PrntScrn and send it under /media/screenshots
-bindsym Print       exec --no-startup-id "/usr/bin/flameshot && /usr/bin/flameshot gui"
+bindsym Print exec --no-startup-id "/usr/bin/flameshot && /usr/bin/flameshot gui"
 
 # === Increase/Decrease monitor brightness
-bindsym XF86MonBrightnessUp  exec --no-startup-id "xbacklight  +10"
-bindsym 0x1008FF03  exec --no-startup-id "xbacklight -dec 10"
+bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight +10"
+bindsym 0x1008FF03 exec --no-startup-id "xbacklight -dec 10"
 
 # === media key-bindings
 
 # decrease volume
-bindsym 0x1008FF11  exec --no-startup-id "amixer set Master 10%-"; \
-                    exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym 0x1008FF11 exec --no-startup-id "amixer set Master 10%-"; \
+ exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
 
 # increase volume
-bindsym 0x1008FF13  exec --no-startup-id "amixer set Master 10%+"; \
-                    exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym 0x1008FF13 exec --no-startup-id "amixer set Master 10%+"; \
+ exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
 
 # mute
-bindsym 0x1008FF12  exec --no-startup-id "amixer set Master 0%"
+bindsym 0x1008FF12 exec --no-startup-id "amixer set Master 0%"
 
-bindsym 0x1008FF14  exec --no-startup-id ""     # play
-bindsym 0x1008FF15  exec --no-startup-id ""     # stop
+bindsym 0x1008FF14 exec --no-startup-id "" # play
+bindsym 0x1008FF15 exec --no-startup-id "" # stop
 
 # toggle touchpad
-bindsym 0x1008FFA9  exec --no-startup-id "synclient TouchpadOff=0"
+bindsym 0x1008FFA9 exec --no-startup-id "synclient TouchpadOff=0"
 
 # open file manager
 bindsym $Mod+Shift+f exec --no-startup-id "pcmanfm -n ~/"
 
 # === change focus using cursor keys
-bindsym $Mod+Left   focus left
-bindsym $Mod+Down   focus down
-bindsym $Mod+Up     focus up
-bindsym $Mod+Right  focus right
+bindsym $Mod+Left focus left
+bindsym $Mod+Down focus down
+bindsym $Mod+Up focus up
+bindsym $Mod+Right focus right
 
 # === move focused window with cursor keys
-bindsym $Mod+Shift+Left     move left   50px
-bindsym $Mod+Shift+Down     move down   50px
-bindsym $Mod+Shift+Up       move up     50px
-bindsym $Mod+Shift+Right    move right  50px
+bindsym $Mod+Shift+Left move left 50px
+bindsym $Mod+Shift+Down move down 50px
+bindsym $Mod+Shift+Up move up 50px
+bindsym $Mod+Shift+Right move right 50px
 
 # ---------------------------------------------
 # - Layout
@@ -141,11 +125,11 @@ bindsym $Mod+space focus mode_toggle
 # -------------------------------
 
 bindsym $Mod+minus [class="^Alacritty"] scratchpad show, move position center
-bindsym $Mod+Shift+minus                move scratchpad
-bindsym $Mod+a                          scratchpad show, move position center
-bindsym $Mod+m [class="^Mousepad"]      scratchpad show
+bindsym $Mod+Shift+minus move scratchpad
+bindsym $Mod+a scratchpad show, move position center
+bindsym $Mod+m [class="^Mousepad"] scratchpad show
 # bindsym $Mod+period [class=".*"] move scratchpad
-bindsym $Mod+comma [title=".*"]         scratchpad show
+bindsym $Mod+comma [title=".*"] scratchpad show
 
 # -------------------------
 # - Workspaces
@@ -192,15 +176,15 @@ bindsym $Mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # resize windows
 mode "resize" {
 
-    # same bindings for arrow keys
-    bindsym Left  resize shrink width   30 px or 30 ppt
-    bindsym Down  resize grow   height  30 px or 30 ppt
-    bindsym Up    resize shrink height  30 px or 30 ppt
-    bindsym Right resize grow   width   30 px or 30 ppt
+ # same bindings for arrow keys
+ bindsym Left resize shrink width 30 px or 30 ppt
+ bindsym Down resize grow height 30 px or 30 ppt
+ bindsym Up resize shrink height 30 px or 30 ppt
+ bindsym Right resize grow width 30 px or 30 ppt
 
-    # back to normal: Enter or Escape
-    bindsym Escape resize set 1350 px 500 px
-    bindsym Return mode "default"
+ # back to normal: Enter or Escape
+ bindsym Escape resize set 1350 px 500 px
+ bindsym Return mode "default"
 }
 bindsym $Mod+r mode "resize"
 
@@ -209,88 +193,98 @@ bindsym $Mod+r mode "resize"
 # -------------------
 
 bar {
-    mode dock
-    position top
-    workspace_buttons yes
+ mode dock
+ position top
+ workspace_buttons yes
 
-    # status_command exec bumblebee-status -m indicator brightness\
-    #                                        pomodoro pasink pasource\
-    #                                        spacer datetime spacer\
-    #                                        battery\
-    #                                        disk:/\
-    #                                     -p datetime.format="%a %d/%m %H:%M"\
-    #                                        disk.format="{percent:.02f}"\
-    #                                        pomodoro.work=45\
-    #                                        spacer.text="  ☣  "\
-    #                                        spacer.text="  ☣  "\
-    #                                        spacer.text="  ☣  "\
-    #                                     -t iceberg\
-    #                                     --markup pango
-    
-    status_command i3blocks
-    i3bar_command i3bar
+ # status_command exec bumblebee-status -m indicator brightness\
+ # pomodoro pasink pasource\
+ # spacer datetime spacer\
+ # battery\
+ # disk:/\
+ # -p datetime.format="%a %d/%m %H:%M"\
+ # disk.format="{percent:.02f}"\
+ # pomodoro.work=45\
+ # spacer.text=" ☣ "\
+ # spacer.text=" ☣ "\
+ # spacer.text=" ☣ "\
+ # -t iceberg\
+ # --markup pango
+ 
+ status_command i3blocks
+ i3bar_command i3bar
 
-    # font pango:DejaVu Sans Mono 7, FontAwesome 7
-    font pango:Monospace 9
+ # font pango:DejaVu Sans Mono 7, FontAwesome 7
+ font pango:Monospace 9
 
-    tray_output primary
-    tray_padding 0 px
-    separator_symbol "·"
+ tray_output primary
+ tray_padding 1 px
+ separator_symbol "·"
 
-    colors {
-        background #000000
-        statusline #999999
-        separator  #666666
-        
-        #<border> <background> <foreground>
-        focused_workspace       #ffff00     #000000     #ffffff
-        active_workspace        #101010     #00ee00     #ffee00
-        inactive_workspace      #11aaff     #000000     #908070
-        urgent_workspace        #101010     #151515     #d7005f
-        binding_mode            #101010     #901818     #ffffff
-    }
+ colors {
+ background #000000
+ statusline #999999
+ separator #666666
+ 
+ #<border> <background> <foreground>
+ focused_workspace #ffff00 #000000 #ffffff
+ active_workspace #101010 #00ee00 #ffee00
+ inactive_workspace #11aaff #000000 #908070
+ urgent_workspace #101010 #151515 #d7005f
+ binding_mode #101010 #901818 #ffffff
+ }
 }
 
 # ------------------------
 # - Window rules
 # ------------------------
 
+# title_align left|center|right
+title_align center
+
 # floating size boundaries
 floating_minimum_size 10 x 10
 floating_maximum_size -1 x -1
 
 # window commands
-for_window [class="Thunderbird"]                border pixel 0
-for_window [floating]                           border pixel 4
-for_window [window_role="app"]                  floating enable
-for_window [window_role="pop-up"]               floating enable
-for_window [window_role="task_dialog"]          floating enable
-for_window [title="Preferences$"]               floating enable
+for_window [class="Thunderbird"] border pixel 0
+for_window [floating] border pixel 5
+for_window [window_role="app"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [title="Preferences$"] floating enable
+
+for_window [class=".*"] title_format "<span foreground='white' size='large'><b> %title </b></span>"
+
+for_window [all] title_window_icon on 
+for_window [all] title_window_icon padding 1px 
 
 # window handling => move to workspace
-assign [class="^Telegram"]      → "im"
-assign [class="(?i)Discord.*"]  → "im"
-assign [class="(?i)Signal*"]  → "im"
+assign [class="^Telegram"] → "im"
+assign [class="(?i)Discord.*"] → "im"
+assign [class="(?i)Signal*"] → "im"
 
-assign [class="^(?i)Thunderbird"]   → "mail"
-assign [class="^VirtualBox"]        → "vbox"
-assign [class="VirtualBox"]         → "vbox"
+assign [class="^(?i)Thunderbird"] → "mail"
+assign [class="^VirtualBox"] → "vbox"
+assign [class="VirtualBox"] → "vbox"
 
 # ---------------
 # - UI
 # ---------------
 
-#class                  #border #backgr #text   #indicator
-client.focused          #ff0015 #285577 #fffff0 #2e9ef4
-client.focused_inactive #333333 #5f676a #ffffff #484e50
-client.unfocused        #444444 #444444 #888888 #292d22
-client.urgent           #2f443a #987654 #ff0000 #ee0001
+#class                  #border #backgr #text #indicator #child
+client.focused          #ff0000 #101010 #fffff0 #2e9ef4 #ff0000
+client.focused_inactive #000000 #202020 #ffffff #484e50 #000000
+client.unfocused        #000000 #303030 #888888 #292d22 #0c0c0c
+client.urgent           #ff0000 #987654 #ff0000 #ee0001 #0c0c0c
+client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
+client.background       #000000
 
 # i3-gaps
-smart_gaps on
+smart_gaps off
 gaps inner 3
-gaps outer 1
-hide_edge_borders both
+gaps outer 3
+hide_edge_borders none
 
 ### Startup
 exec --no-startup-id i3-msg workspace 1
@@ -302,3 +296,5 @@ exec_always --no-startup-id /usr/bin/nm-applet
 
 # exec_always --no-startup-id xautolock -time 10 -locker "i3lock-fancy -f Source-Sans-Pro"
 # exec_always --no-startup-id picom
+
+exec --no-startup-id xrandr --output HDMI-2 --mode 1920x1080 --rate 60.00 --output eDP-1 --mode 1920x1080 --rate 60.01 --below HDMI-2 
