@@ -1,11 +1,18 @@
 # i3 configuration file
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
+exec --no-startup-id \
+       /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & 
+exec --no-startup-id \
+       eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 
 
 # --------- general options ----------------
 
 workspace_layout tabbed
 workspace_auto_back_and_forth yes
+
+show_marks yes
+
+popup_during_fullscreen smart
 
 #default modifier: Windows key
 set $Mod Mod4
@@ -28,16 +35,20 @@ bindsym $Mod+b border pixel 3
 
 # start a terminal
 # bindsym $Mod+Shift+Return exec --no-startup-id konsole --hide-menubar -e tmux
-bindsym $Mod+Return exec --no-startup-id alacritty -e tmux
+bindsym $Mod+Return \
+          exec --no-startup-id alacritty -e tmux
 
 # caps lock
-bindsym --release Caps_Lock exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release Caps_Lock \
+          exec pkill -SIGRTMIN+10 i3blocks
 
 # num lock
-bindsym --release Num_Lock exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Num_Lock \
+          exec pkill -SIGRTMIN+11 i3blocks
 
 # lock screen (man i3lock)
-bindsym Ctrl+$Mod+l exec --no-startup-id i3lock --ignore-empty-password --color="#000000"
+bindsym Ctrl+$Mod+l \
+          exec --no-startup-id i3lock --ignore-empty-password --color="#000000"
 
 # kill focused window
 bindsym $Mod+Shift+q kill
@@ -47,49 +58,61 @@ bindsym $Mod+d exec --no-startup-id "rofi -show run"
 
 # change to us keyboard layout if in greek
 # localectl list-x11-keymap-{models, options}
-exec --no-startup-id "setxkbmap -model acer_laptop -layout us,gr -option grp:alt_shift_toggle"
+exec --no-startup-id \
+       "setxkbmap -model acer_laptop -layout us,gr -option grp:alt_shift_toggle"
 
 # =============== Media Keys ==================
 
 # === PrntScrn and send it under /media/screenshots
-bindsym Print exec --no-startup-id "/usr/bin/flameshot && /usr/bin/flameshot gui"
+bindsym Print exec --no-startup-id \
+          "/usr/bin/flameshot && /usr/bin/flameshot gui"
 
 # === Increase/Decrease monitor brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight +10"
-bindsym 0x1008FF03 exec --no-startup-id "xbacklight -dec 10"
+bindsym XF86MonBrightnessUp exec --no-startup-id \
+          "xbacklight +10"
+
+bindsym 0x1008FF03 exec --no-startup-id \
+          "xbacklight -dec 10"
 
 # === media key-bindings
 
 # decrease volume
-bindsym 0x1008FF11 exec --no-startup-id "amixer set Master 10%-"; \
- exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym 0x1008FF11 exec --no-startup-id \
+          "amixer set Master 10%-"; \
+          exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
 
 # increase volume
-bindsym 0x1008FF13 exec --no-startup-id "amixer set Master 10%+"; \
- exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym 0x1008FF13 exec --no-startup-id \
+          "amixer set Master 10%+"; \
+          exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
 
 # mute
-bindsym 0x1008FF12 exec --no-startup-id "amixer set Master 0%"
+bindsym 0x1008FF12 exec --no-startup-id \
+          "amixer set Master 0%"
 
-bindsym 0x1008FF14 exec --no-startup-id "" # play
-bindsym 0x1008FF15 exec --no-startup-id "" # stop
+bindsym 0x1008FF14 exec --no-startup-id \
+          "" # play
+bindsym 0x1008FF15 exec --no-startup-id \
+          "" # stop
 
 # toggle touchpad
-bindsym 0x1008FFA9 exec --no-startup-id "synclient TouchpadOff=0"
+bindsym 0x1008FFA9 exec --no-startup-id \
+          "synclient TouchpadOff=0"
 
 # open file manager
-bindsym $Mod+Shift+f exec --no-startup-id "pcmanfm -n ~/"
+bindsym $Mod+Shift+f exec --no-startup-id \
+          "pcmanfm -n ~/"
 
 # === change focus using cursor keys
-bindsym $Mod+Left focus left
-bindsym $Mod+Down focus down
-bindsym $Mod+Up focus up
-bindsym $Mod+Right focus right
+bindsym $Mod+Left   focus left
+bindsym $Mod+Down   focus down
+bindsym $Mod+Up     focus up
+bindsym $Mod+Right  focus right
 
 # === move focused window with cursor keys
-bindsym $Mod+Shift+Left move left 50px
-bindsym $Mod+Shift+Down move down 50px
-bindsym $Mod+Shift+Up move up 50px
+bindsym $Mod+Shift+Left  move left  50px
+bindsym $Mod+Shift+Down  move down  50px
+bindsym $Mod+Shift+Up    move up    50px
 bindsym $Mod+Shift+Right move right 50px
 
 # ---------------------------------------------
@@ -124,11 +147,17 @@ bindsym $Mod+space focus mode_toggle
 # - Scratchpads
 # -------------------------------
 
-bindsym $Mod+minus [class="^Alacritty"] scratchpad show, move position center
+bindsym $Mod+minus [class="^Alacritty"] \
+                           scratchpad show, move position center
+
 bindsym $Mod+Shift+minus move scratchpad
-bindsym $Mod+a scratchpad show, move position center
-bindsym $Mod+m [class="^Mousepad"] scratchpad show
+
+bindsym $Mod+a \
+          scratchpad show, move position center
+
+# bindsym $Mod+m [class="^Mousepad"] scratchpad show
 # bindsym $Mod+period [class=".*"] move scratchpad
+
 bindsym $Mod+comma [title=".*"] scratchpad show
 
 # -------------------------
@@ -171,22 +200,42 @@ bindsym $Mod+Shift+w move container to workspace "vbox"
 bindsym $Mod+Shift+r reload,restart
 
 # exit i3 (with warning)
-bindsym $Mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut.' -b 'Exit' 'i3-msg exit'"
+bindsym $Mod+Shift+e exec \
+          "i3-nagbar -t warning -m 'You pressed the exit shortcut.' -b 'Exit' 'i3-msg exit'"
 
 # resize windows
 mode "resize" {
 
  # same bindings for arrow keys
- bindsym Left resize shrink width 30 px or 30 ppt
- bindsym Down resize grow height 30 px or 30 ppt
- bindsym Up resize shrink height 30 px or 30 ppt
- bindsym Right resize grow width 30 px or 30 ppt
+ bindsym Left  resize shrink width  30 px or 30 ppt
+ bindsym Down  resize grow   height 30 px or 30 ppt
+ bindsym Up    resize shrink height 30 px or 30 ppt
+ bindsym Right resize grow   width  30 px or 30 ppt
 
  # back to normal: Enter or Escape
  bindsym Escape resize set 1350 px 500 px
  bindsym Return mode "default"
 }
 bindsym $Mod+r mode "resize"
+
+
+# mode "mark" {
+#     bindsym Escape mode "default"
+#     bindsym $mod+Shift+q mode "default"
+# 
+#     bindsym a mark a, mode "default" 
+# }
+# bindsym $Mod+m mode "mark"
+
+
+# mode "swap" {
+#     bindsym Escape mode "default"
+#     bindsym $mod+Shift+q mode "default"
+# 
+#     bindsym a swap with mark a, mode "default" 
+# }
+# bindsym $Mod+apostrophe mode "swap" 
+
 
 # -------------------
 # - i3bar
@@ -254,7 +303,8 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
 
-for_window [class=".*"] title_format "<span foreground='white' size='large'><b> %title </b></span>"
+for_window [class=".*"] \
+  title_format "<span foreground='white' size='large'><b> %title </b></span>"
 
 for_window [all] title_window_icon on 
 for_window [all] title_window_icon padding 1px 
@@ -273,7 +323,7 @@ assign [class="VirtualBox"] → "vbox"
 # ---------------
 
 #class                  #border #backgr #text #indicator #child
-client.focused          #ff0000 #101010 #fffff0 #2e9ef4 #ff0000
+client.focused          #ff0000 #101010 #fffff0 #ff0000 #ff0000
 client.focused_inactive #000000 #202020 #ffffff #484e50 #000000
 client.unfocused        #000000 #303030 #888888 #292d22 #0c0c0c
 client.urgent           #ff0000 #987654 #ff0000 #ee0001 #0c0c0c
@@ -287,14 +337,25 @@ gaps outer 3
 hide_edge_borders none
 
 ### Startup
-exec --no-startup-id i3-msg workspace 1
-exec --no-startup-id "${XDG_CONFIG_HOME}/i3/tools/init-rofi.sh"
-exec --no-startup-id /usr/bin/pulseaudio --start --daemonize
+exec --no-startup-id \
+       i3-msg workspace 1
+exec --no-startup-id \
+       "${XDG_CONFIG_HOME}/i3/tools/init-rofi.sh"
+exec --no-startup-id \
+       /usr/bin/pulseaudio --start --daemonize
 # exec --no-startup-id /usr/bin/blueman-applet
 # exec --no-startup-id /usr/bin/xfce4-clipman
-exec_always --no-startup-id /usr/bin/nm-applet
+exec_always --no-startup-id \
+              /usr/bin/nm-applet
 
 # exec_always --no-startup-id xautolock -time 10 -locker "i3lock-fancy -f Source-Sans-Pro"
 # exec_always --no-startup-id picom
 
-exec --no-startup-id xrandr --output HDMI-2 --mode 1920x1080 --rate 60.00 --output eDP-1 --mode 1920x1080 --rate 60.01 --below HDMI-2 
+exec --no-startup-id \
+       xrandr --output HDMI-2 \
+              --mode 1920x1080 \
+              --rate 60.00 \
+              --output eDP-1 \
+              --mode 1920x1080 \
+              --rate 60.01 \
+              --below HDMI-2 
