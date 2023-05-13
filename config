@@ -1,7 +1,6 @@
 # i3 configuration file
 exec --no-startup-id \
-       /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & 
-exec --no-startup-id \
+       /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & \
        eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 
 
@@ -12,7 +11,7 @@ workspace_auto_back_and_forth yes
 
 show_marks yes
 
-popup_during_fullscreen smart
+# popup_during_fullscreen smart
 
 #default modifier: Windows key
 set $Mod Mod4
@@ -47,7 +46,7 @@ bindsym --release Num_Lock \
           exec pkill -SIGRTMIN+11 i3blocks
 
 # lock screen (man i3lock)
-bindsym Ctrl+$Mod+l \
+bindsym $Mod+l \
           exec --no-startup-id i3lock --ignore-empty-password --color="#000000"
 
 # kill focused window
