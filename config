@@ -163,8 +163,8 @@ bindsym $Mod+comma [title=".*"] scratchpad show
 # - Workspaces
 # -------------------------
 
-bindsym $Mod+button4 workspace prev
-bindsym $Mod+button5 workspace next
+bindsym --whole-window $Mod+button4 workspace next
+bindsym --whole-window $Mod+button5 workspace prev
 
 # switch to workspace
 bindsym $Mod+0 workspace "0"
