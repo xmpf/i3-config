@@ -24,13 +24,13 @@ default_border pixel 3
 default_floating_border pixel 5
 
 # font
-font pango:FontAwesome 11px
+font pango:FontAwesome 10px
+
+# ------- key-bindings ----------
 
 # changing border style
 bindsym $Mod+n border none
 bindsym $Mod+b border pixel 3
-
-# ------- key-bindings ----------
 
 # start a terminal
 # bindsym $Mod+Shift+Return exec --no-startup-id konsole --hide-menubar -e tmux
@@ -163,6 +163,9 @@ bindsym $Mod+comma [title=".*"] scratchpad show
 # - Workspaces
 # -------------------------
 
+bindsym $Mod+button4 workspace prev
+bindsym $Mod+button5 workspace next
+
 # switch to workspace
 bindsym $Mod+0 workspace "0"
 bindsym $Mod+1 workspace "1"
@@ -242,7 +245,7 @@ bindsym $Mod+r mode "resize"
 
 bar {
  mode dock
- position top
+ position bottom
  workspace_buttons yes
 
  # status_command exec bumblebee-status -m indicator brightness\
@@ -263,7 +266,7 @@ bar {
  i3bar_command i3bar
 
  # font pango:DejaVu Sans Mono 7, FontAwesome 7
- font pango:Monospace 9
+ font pango:Monospace 11
 
  tray_output primary
  tray_padding 1 px
