@@ -89,10 +89,13 @@ bindsym 0x1008FF13 exec --no-startup-id \
 bindsym 0x1008FF12 exec --no-startup-id \
           "amixer set Master 0%"
 
-bindsym 0x1008FF14 exec --no-startup-id \
-          "" # play
-bindsym 0x1008FF15 exec --no-startup-id \
-          "" # stop
+# play-pause
+bindsym --whole-window 0x1008FF14 exec --no-startup-id \
+          "/usr/bin/playerctl play-pause"
+
+# stop
+bindsym --whole-window 0x1008FF15 exec --no-startup-id \
+          "/usr/bin/playerctl stop"
 
 # toggle touchpad
 bindsym 0x1008FFA9 exec --no-startup-id \
@@ -163,8 +166,8 @@ bindsym $Mod+comma [title=".*"] scratchpad show
 # - Workspaces
 # -------------------------
 
-bindsym --whole-window $Mod+button4 workspace next
-bindsym --whole-window $Mod+button5 workspace prev
+bindsym --whole-window $Mod+button4 workspace next_on_output 
+bindsym --whole-window $Mod+button5 workspace prev_on_output 
 
 # switch to workspace
 bindsym $Mod+0 workspace "0"
