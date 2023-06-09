@@ -103,6 +103,9 @@ set $ws9 "9"
 set $ws10 "10"
 
 # switch to workspace
+bindsym --whole-window $Mod+button4 workspace next_on_output
+bindsym --whole-window $Mod+button5 workspace prev_on_output
+
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
