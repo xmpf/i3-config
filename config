@@ -3,9 +3,6 @@ exec_always --no-startup-id \
        /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & \
        eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 
-# keyboard layouts
-exec_always --no-startup-id \
-       setxkbmap -layout us,gr option grp:alt_shift_toggle
  
 # --------- general options ----------------
 
@@ -350,17 +347,25 @@ hide_edge_borders none
 ### Startup
 exec --no-startup-id \
        i3-msg workspace 1
+
 exec --no-startup-id \
        "${XDG_CONFIG_HOME}/i3/tools/init-rofi.sh"
+
 exec --no-startup-id \
        /usr/bin/pulseaudio --start --daemonize
+
 # exec --no-startup-id /usr/bin/blueman-applet
 # exec --no-startup-id /usr/bin/xfce4-clipman
+
 exec_always --no-startup-id \
               /usr/bin/nm-applet
 
 # exec_always --no-startup-id xautolock -time 10 -locker "i3lock-fancy -f Source-Sans-Pro"
 # exec_always --no-startup-id picom
+
+# keyboard layouts
+exec_always --no-startup-id \
+       setxkbmap -layout us,gr option grp:alt_shift_toggle
 
 exec --no-startup-id \
        xrandr --output HDMI-2 \
