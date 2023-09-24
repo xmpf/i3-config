@@ -77,17 +77,17 @@ bindsym 0x1008FF03 exec --no-startup-id \
 
 # decrease volume
 bindsym 0x1008FF11 exec --no-startup-id \
-          "amixer set Master 10%-"; \
+          "pactl set-sink-volume 0 -5%"; \
           exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
 
 # increase volume
 bindsym 0x1008FF13 exec --no-startup-id \
-          "amixer set Master 10%+"; \
+          "pactl set-sink-volume 0 +5%"; \
           exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
 
 # mute
 bindsym 0x1008FF12 exec --no-startup-id \
-          "amixer set Master 0%"
+          "pactl set-sink-mute 0 toggle"
 
 # play-pause
 bindsym --whole-window 0x1008FF14 exec --no-startup-id \
