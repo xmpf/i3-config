@@ -166,11 +166,11 @@ bindsym $Mod+comma [title=".*"] scratchpad show
 # - Workspaces
 # -------------------------
 
-bindsym --whole-window Shift+Left workspace prev_on_output 
+bindsym --whole-window Ctrl+Shift+Left workspace prev_on_output 
 bindsym --whole-window $Mod+button4 workspace prev_on_output 
 bindsym --whole-window Mod1+button4 focus left
 
-bindsym --whole-window Shift+Right workspace next_on_output 
+bindsym --whole-window Ctrl+Shift+Right workspace next_on_output 
 bindsym --whole-window $Mod+button5 workspace next_on_output 
 bindsym --whole-window Mod1+button5 focus right
 
