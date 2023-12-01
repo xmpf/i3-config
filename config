@@ -87,7 +87,8 @@ bindsym 0x1008FF13 exec --no-startup-id \
 
 # mute
 bindsym 0x1008FF12 exec --no-startup-id \
-          "pactl set-sink-mute 0 toggle"
+          "pactl set-sink-mute 0 toggle"; \
+          exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
 
 # play-pause
 bindsym --whole-window 0x1008FF14 exec --no-startup-id \
@@ -252,46 +253,32 @@ bindsym $Mod+r mode "resize"
 # -------------------
 
 bar {
- mode dock
- position bottom
- workspace_buttons yes
+    mode dock
+    position bottom
+    workspace_buttons yes
 
- # status_command exec bumblebee-status -m indicator brightness\
- # pomodoro pasink pasource\
- # spacer datetime spacer\
- # battery\
- # disk:/\
- # -p datetime.format="%a %d/%m %H:%M"\
- # disk.format="{percent:.02f}"\
- # pomodoro.work=45\
- # spacer.text=" ☣ "\
- # spacer.text=" ☣ "\
- # spacer.text=" ☣ "\
- # -t iceberg\
- # --markup pango
- 
- status_command i3blocks
- i3bar_command i3bar
+    status_command i3blocks
+    i3bar_command i3bar
 
- # font pango:DejaVu Sans Mono 7, FontAwesome 7
- font pango:Monospace 11
+    # font pango:DejaVu Sans Mono 7, FontAwesome 7
+    font pango:Monospace 11
 
- tray_output primary
- tray_padding 1 px
- separator_symbol "·"
+    tray_output primary
+    tray_padding 1 px
+    separator_symbol "·"
 
- colors {
- background #000000
- statusline #999999
- separator #666666
- 
- #<border> <background> <foreground>
- focused_workspace #ffff00 #000000 #ffffff
- active_workspace #101010 #00ee00 #ffee00
- inactive_workspace #11aaff #000000 #908070
- urgent_workspace #101010 #151515 #d7005f
- binding_mode #101010 #901818 #ffffff
- }
+    colors {
+        background   #000000
+        statusline   #999999
+        separator    #666666
+    
+                            # <brd>   <bg>    <fg>
+        focused_workspace   #ffff00 #000000 #ffffff
+        active_workspace    #101010 #00ee00 #ffee00
+        inactive_workspace  #11aaff #000000 #908070
+        urgent_workspace    #101010 #151515 #d7005f
+        binding_mode        #101010 #901818 #ffffff
+    }
 }
 
 # ------------------------
